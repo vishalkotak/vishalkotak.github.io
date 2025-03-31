@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vishal | Engineer</title>
+  <style>
+    /* Reset some default spacing */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Use a monospace font for a code/developer feel */
+    body {
+      font-family: 'Courier New', Courier, monospace;
+      background-color: #1e1e1e;
+      color: #e0e0e0;
+      overflow-x: hidden; /* remove horizontal scroll */
+    }
+
+    /* Container to constrain width and remove extra spacing */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    /* Header styling */
+    header {
+      background-color: #282828;
+      padding: 1.5rem 0;
+      text-align: center;
+      border-bottom: 2px solid #444;
+    }
+    
+    header h1 {
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    header p {
+      font-size: 1rem;
+    }
+    
+    /* Navigation styling */
+    nav {
+      background-color: #333;
+    }
+    
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      padding: 0.5rem 0;
+    }
+    
+    nav ul li {
+      margin: 0 1rem;
+    }
+    
+    nav ul li a {
+      text-decoration: none;
+      color: #e0e0e0;
+      font-size: 0.9rem;
+    }
+    
+    nav ul li a:hover {
+      text-decoration: underline;
+    }
+    
+    /* Section styling */
+    section {
+      padding: 1rem 0;
+      border-bottom: 1px solid #444;
+    }
+    
+    section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      border-bottom: 2px solid #444;
+      padding-bottom: 0.3rem;
+    }
+    
+    section p, section li {
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+    }
+    
+    /* Projects list styling */
+    #projects ul {
+      list-style: none;
+      padding-left: 1rem;
+    }
+    
+    #projects ul li {
+      position: relative;
+      padding-left: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    #projects ul li::before {
+      content: "›"; /* Developer-style arrow bullet */
+      position: absolute;
+      left: 0;
+      color: #e0e0e0;
+    }
+    
+    /* Contact links in green */
+    #contact a {
+      color: #00ff00;
+      text-decoration: none;
+    }
+    
+    #contact a:hover {
+      text-decoration: underline;
+    }
+    
+    /* Footer styling */
+    footer {
+      text-align: center;
+      padding: 0.8rem 0;
+      background-color: #282828;
+      border-top: 2px solid #444;
+      font-size: 0.8rem;
+    }
+  </style>
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Vishal Kotak</h1>
+    </header>
+
+    <!-- About Section -->
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        I’m an engineer with a passion for designing and building distributed systems.
+        My expertise spans Backend Services, AI, Cloud Infrastructure, and Observability.
+      </p>
+      <p>
+        Companies: Stealth AI Infra, Microsoft, AWS, Amazon Alexa, Fidelity Investments
+      </p>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+      <h2>Projects</h2>
+      <ul>
+        <li>GPU and Networking</li>
+        <li>Copilot service leveraging Semantic Kernel and Azure OpenAI service GPT-4 to increase the accuracy of intent detection, precise parameter selection, and response validation</li>
+        <li>Reverse proxy service in C# .NET achieving a reduction in request time latency from 2.3 seconds to less than 250 ms</li>
+        <li>Azure multi-portal initiative, providing comprehensive services including OAuth, reverse proxy, and preference store reducing a business portal launch time from 2 months to 3 weeks</li>
+        <li>Designed and built an asynchronous RabbitMQ based service to push entity details from the current request to improve speech-to-text conversion for the next request</li>
+        <li>Designed a multi-tenant AWS Lambda based service for data source connectivity in QuickSight (AWS BI tool) to reduce blast radius during server takeover for critical databases</li>
+        <li>Architected the CRR algorithm for 40+ million customers using Spark, Kafka, Sqoop, and Cassandra reducing execution time from 8 hours to 45 minutes</li>
+      </ul>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>
+        <a href="mailto:vishal.sanjiv.kotak@gmail.com">vishal.sanjiv.kotak@gmail.com</a>
+      </p>
+        <a href="https://www.linkedin.com/in/vishalsanjivkotak" target="_blank">LinkedIn</a>
+      </p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2025 Vishal Kotak. All rights reserved.</p>
+    </footer>
+  </div>
+</body>
+</html>
