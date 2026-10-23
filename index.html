@@ -3,272 +3,206 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Vishal | Engineer</title>
+  <meta name="description" content="Vishal Kotak, AI infrastructure engineer. GPUs, RDMA, distributed storage, LLM inference." />
+  <title>vishal@kotak:~$</title>
+  <!-- Terminal prompt favicon -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231e1e1e'/%3E%3Cpath d='M14 20l12 12-12 12' fill='none' stroke='%2300ff00' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M32 46h18' stroke='%2300ff00' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    /* Reset some default spacing */
+    :root {
+      --bg: #1e1e1e;
+      --fg: #e0e0e0;
+      --dim: #808080;
+      --green: #00ff00;
+      --accent: #7aa2f7;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
-    /* Use a monospace font for a code/developer feel */
     body {
-      font-family: 'Courier New', Courier, monospace;
-      background-color: #1e1e1e;
-      color: #e0e0e0;
-      overflow-x: hidden; /* remove horizontal scroll */
+      font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
+      font-size: 14px;
+      line-height: 1.55;
+      background-color: var(--bg);
+      color: var(--fg);
+      overflow-x: hidden;
     }
 
-    /* Container to constrain width and remove extra spacing */
     .container {
-      max-width: 1200px;
+      max-width: 820px;
       margin: 0 auto;
-      padding: 0 1rem;
+      padding: 2rem 1rem;
     }
 
-    /* Header styling */
-    header {
-      background-color: #282828;
-      padding: 1.5rem 0;
-      text-align: center;
-      border-bottom: 2px solid #444;
-    }
-    
-    header h1 {
-      font-size: 2.2rem;
-      margin-bottom: 0.5rem;
-    }
-    
-    header p {
-      font-size: 1rem;
-    }
-    
-    /* Navigation styling */
-    nav {
-      background-color: #333;
-    }
-    
-    nav ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      padding: 0.5rem 0;
-    }
-    
-    nav ul li {
-      margin: 0 1rem;
-    }
-    
-    nav ul li a {
+    a {
+      color: var(--green);
       text-decoration: none;
-      color: #e0e0e0;
-      font-size: 0.9rem;
     }
-    
-    nav ul li a:hover {
+
+    a:hover {
       text-decoration: underline;
     }
-    
-    /* Section styling */
-    section {
-      padding: 1rem 0;
-      border-bottom: 1px solid #444;
+
+    .dim {
+      color: var(--dim);
     }
-    
-    section h2 {
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-      border-bottom: 2px solid #444;
-      padding-bottom: 0.3rem;
+
+    /* Shell prompt that heads each section */
+    .prompt {
+      margin: 1.4rem 0 0.4rem;
     }
-    
-    section p, section li {
-      font-size: 0.9rem;
-      margin-bottom: 0.5rem;
-      line-height: 1.4;
+
+    .prompt::before {
+      content: "vishal@kotak:~$ ";
+      color: var(--green);
     }
-    
-    /* Projects list styling */
-    #projects ul {
-      list-style: none;
-      padding-left: 1rem;
+
+    h1 {
+      font-size: 1.4rem;
     }
-    
-    #projects ul li {
-      position: relative;
-      padding-left: 1.2rem;
-      margin-bottom: 0.5rem;
+
+    .stack {
+      display: grid;
+      grid-template-columns: 7ch 1fr;
     }
-    
-    #projects ul li::before {
-      content: "›"; /* Developer-style arrow bullet */
-      position: absolute;
-      left: 0;
-      color: #e0e0e0;
+
+    .stack dt {
+      color: var(--dim);
     }
-    
-    /* Experience section styling */
+
+    /* Experience log: one header line per role, tree-style bullets */
     .role {
-      margin-bottom: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0 1ch;
+      margin-top: 0.6rem;
     }
 
-    .role h3 {
-      font-size: 1rem;
-      margin-bottom: 0.3rem;
+    .role .when {
+      color: var(--dim);
+      min-width: 10ch;
     }
 
-    .role .dates {
-      font-weight: normal;
-      color: #a0a0a0;
-      font-size: 0.85rem;
+    .role b {
+      color: var(--accent);
     }
 
-    #experience ul {
+    .log ul {
       list-style: none;
-      padding-left: 1rem;
+      margin-left: 11ch;
     }
 
-    #experience ul li {
+    .log li {
       position: relative;
-      padding-left: 1.2rem;
+      padding-left: 3ch;
     }
 
-    #experience ul li::before {
-      content: "›";
+    .log li::before {
+      content: "├─";
       position: absolute;
       left: 0;
-      color: #e0e0e0;
+      color: var(--dim);
     }
 
-    /* Contact links in green */
-    #contact a {
-      color: #00ff00;
-      text-decoration: none;
+    .log li:last-child::before {
+      content: "└─";
     }
-    
-    #contact a:hover {
-      text-decoration: underline;
+
+    @media (max-width: 600px) {
+      .log ul {
+        margin-left: 0;
+      }
     }
-    
-    /* Footer styling */
+
+    /* Blinking cursor on the last prompt */
+    .cursor {
+      display: inline-block;
+      width: 0.6em;
+      height: 1.1em;
+      background: var(--green);
+      vertical-align: text-bottom;
+      animation: blink 1s steps(1) infinite;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
     footer {
-      text-align: center;
-      padding: 0.8rem 0;
-      background-color: #282828;
-      border-top: 2px solid #444;
+      margin-top: 2rem;
       font-size: 0.8rem;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>Vishal Kotak</h1>
-    </header>
+  <main class="container">
+    <p class="prompt">whoami</p>
+    <h1>Vishal Kotak</h1>
+    <p>AI infra engineer. GPUs, RDMA, distributed storage, LLM inference.</p>
 
-    <!-- About Section -->
-    <section id="about">
-      <h2>About Me</h2>
-      <p>
-        I’m an engineer with a passion for designing and building distributed systems.
-        My expertise spans AI Inference Infrastructure, GPU and RDMA data paths, Distributed Storage, and Cloud Infrastructure.
-      </p>
-      <p>
-        Companies: LinkedIn, Stealth AI Infra, Microsoft, AWS, Amazon Alexa, Fidelity Investments
-      </p>
-    </section>
+    <p class="prompt">cat stack.txt</p>
+    <dl class="stack">
+      <dt>lang</dt><dd>python rust go java</dd>
+      <dt>ai</dt><dd>pytorch cuda sglang rdma/ucx</dd>
+      <dt>infra</dt><dd>k8s terraform kafka postgres azure aws</dd>
+    </dl>
 
-    <!-- Experience Section -->
-    <section id="experience">
-      <h2>Experience</h2>
-
-      <div class="role">
-        <h3>Senior Software Engineer, LinkedIn <span class="dates">| July 2025 to Present</span></h3>
-        <ul>
-          <li>Led cross-team development of the GPU read path for a distributed transactional storage system, delivering snapshot-consistent, Vortex-encoded data directly into GPU memory over RDMA/UCX. Removed CPU decoding and intermediate host copies from the read path, sustaining multi-GB/s throughput per rank for PyTorch and Ray workloads.</li>
-          <li>Designed a shared storage tier for disaggregated LLM inference, working across teams on KV-cache offloading and RDMA/UCX transfers between prefill and decode workers. Enabled context restoration into HBM in under 30 ms, reducing prefill recomputation and freeing GPU memory for larger batches and longer contexts.</li>
-          <li>Led three engineers building hierarchical quotas and admission control for shared infrastructure. Implemented tenant-to-queue mappings, priority handling, and concurrency controls to prevent simultaneous admission requests from oversubscribing capacity.</li>
-        </ul>
-      </div>
-
-      <div class="role">
-        <h3>Software Engineer, Stealth Startup <span class="dates">| March 2024 to July 2025</span></h3>
-        <ul>
-          <li>Designed a rules-based policy engine within a distributed network control plane for multi-region, multi-tenant GPU clusters, automating lifecycle transitions across 100K+ GPUs, switches, and NICs.</li>
-          <li>Built a Python orchestration engine that translated engineer-defined dependency graphs into Temporal workflows for network automation. Deployed on Kubernetes with PostgreSQL-backed persistence, supporting dependency-aware execution, automatic retries, and recovery from worker failures.</li>
-          <li>Built a model-driven network provisioning layer with configuration rendering for 1K devices, translating topology and device configuration models into deployment specifications consumed by Juniper Mist.</li>
-        </ul>
-      </div>
-
-      <div class="role">
-        <h3>Senior Software Engineer, Microsoft <span class="dates">| September 2023 to February 2024</span></h3>
-        <ul>
-          <li>Architected an Azure OpenAI-powered support Copilot for Azure and Xbox, reducing customer-reported technical incidents by 25%. Built the RAG pipeline with document ingestion, chunking, hybrid retrieval, semantic reranking, and token-budgeted context assembly, alongside tool calling for troubleshooting.</li>
-          <li>Led design of a shared Copilot plugin registry across product portals, implementing manifest validation, metadata-based plugin selection, and schema-validated API invocation using OpenAI plugin standards.</li>
-        </ul>
-      </div>
-
-      <div class="role">
-        <h3>Software Engineer II, Microsoft <span class="dates">| January 2022 to August 2023</span></h3>
-        <ul>
-          <li>Designed a reverse proxy service in C#/.NET that reduced request latency from 2.3 seconds to under 250 ms.</li>
-          <li>Led development of shared authentication, access-token handling, reverse proxy, and preference-storage services across Azure portals, reducing portal launch time from two months to three weeks.</li>
-        </ul>
-      </div>
-
-      <div class="role">
-        <h3>Software Development Engineer, Amazon <span class="dates">| December 2020 to January 2022</span></h3>
-        <ul>
-          <li>Designed multi-tenant AWS Lambda infrastructure for QuickSight data-source connectivity, improving isolation and limiting the blast radius of server-compromise scenarios involving critical databases.</li>
-          <li>Built an asynchronous RabbitMQ pipeline that converted request entity data into speech-recognition artifacts in 3 ms, making that context available to improve recognition on subsequent requests.</li>
-        </ul>
-      </div>
-
-      <div class="role">
-        <h3>Senior Software Engineer, Fidelity Investments <span class="dates">| March 2019 to December 2020</span></h3>
-        <ul>
-          <li>Redesigned risk processing for 40 million customers using Spark, Kafka, Sqoop, and Oracle, reducing execution time from eight hours to 45 minutes.</li>
-          <li>Led development of an international money-movement risk system using NLP-based entity extraction, Python, Java/Spring Boot, and AWS EKS. Reduced false positives by 62% while covering 28% of transaction volume.</li>
-        </ul>
-      </div>
-
-      <div class="role">
-        <h3>Software Engineer, Fidelity Investments <span class="dates">| June 2018 to March 2019</span></h3>
-        <ul>
-          <li>Built a web application using the MEAN stack that enabled investigators to review and validate alerts generated by financial-crime detection systems.</li>
-          <li>Extended customer risk processing with geographic risk indicators for high-intensity drug-trafficking and financial-crime areas.</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects">
-      <h2>Timeline</h2>
+    <p class="prompt">git log --oneline career</p>
+    <div class="log">
+      <div class="role"><span class="when">2025-now</span><b>LinkedIn</b><span class="dim">sr swe</span></div>
       <ul>
-        <li>2025: Joined LinkedIn as a Senior Software Engineer, building the GPU read path over RDMA for distributed storage and a shared KV-cache tier for disaggregated LLM inference.</li>
-        <li>2024: Moved to work on a stealth startup building AI data centers, designing the network control plane that automates 100K+ GPUs, switches and NICs.</li>
-        <li>2022: Started working on FrontDoor service at Microsoft. Got promoted to Senior leading the Azure OpenAI support Copilot for Azure and Xbox.</li>
-        <li>2020: Worked with Alexa Local Info (Find Me Nearby Coffee Shops) and AWS QuickSight connectivity.</li>
-        <li>2018: Joined Fidelity Investments to work on trading backend services and learnt about Market Making, Insider Trading and Money Laundering.</li>
-        <li>2016: Pursued MS in Computer Science to focus on programming languages at Northeastern University, Boston.</li>
+        <li>GPU read path: Vortex data into GPU memory over RDMA/UCX, zero host copies, multi-GB/s per rank</li>
+        <li>shared KV-cache tier for disaggregated prefill/decode, HBM restore in &lt;30 ms</li>
+        <li>led 3 engineers on hierarchical quotas + admission control</li>
       </ul>
-    </section>
-    
-    <!-- Contact Section -->
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>
-        <a href="mailto:vishal.sanjiv.kotak@gmail.com">vishal.sanjiv.kotak@gmail.com</a>
-      <p>
-        <a href="https://www.linkedin.com/in/vishalsanjivkotak" target="_blank">LinkedIn</a>
-      </p>
-    </section>
 
-    <!-- Footer -->
-    <footer>
-      <p>&copy; 2026 Vishal Kotak. All rights reserved.</p>
-    </footer>
-  </div>
+      <div class="role"><span class="when">2024-2025</span><b>Stealth AI Infra</b><span class="dim">swe</span></div>
+      <ul>
+        <li>policy engine for a network control plane spanning 100K+ GPUs, switches, NICs</li>
+        <li>dependency graphs → Temporal workflows on k8s + postgres</li>
+        <li>model-driven provisioning for 1K network devices</li>
+      </ul>
+
+      <div class="role"><span class="when">2022-2024</span><b>Microsoft</b><span class="dim">swe ii → sr swe</span></div>
+      <ul>
+        <li>Azure OpenAI support Copilot (RAG + tool calling), -25% incidents</li>
+        <li>Copilot plugin registry with schema-validated invocation</li>
+        <li>.NET reverse proxy: 2.3 s → &lt;250 ms</li>
+      </ul>
+
+      <div class="role"><span class="when">2020-2022</span><b>Amazon</b><span class="dim">sde</span></div>
+      <ul>
+        <li>multi-tenant Lambda isolation for QuickSight connectivity</li>
+        <li>RabbitMQ pipeline feeding Alexa speech recognition context in 3 ms</li>
+      </ul>
+
+      <div class="role"><span class="when">2018-2020</span><b>Fidelity</b><span class="dim">swe → sr swe</span></div>
+      <ul>
+        <li>risk processing for 40M customers on Spark/Kafka: 8 h → 45 min</li>
+        <li>NLP money-movement risk system, -62% false positives</li>
+      </ul>
+
+      <div class="role"><span class="when">2016-2018</span><b>Northeastern</b><span class="dim">ms cs</span></div>
+    </div>
+
+    <p class="prompt">ping vishal</p>
+    <p>
+      <a href="mailto:vishal.sanjiv.kotak@gmail.com">email</a>
+      <span class="dim">·</span>
+      <a href="https://www.linkedin.com/in/vishalsanjivkotak" target="_blank">linkedin</a>
+      <span class="dim">·</span>
+      <a href="https://github.com/vishalkotak" target="_blank">github</a>
+    </p>
+
+    <p class="prompt"><span class="cursor"></span></p>
+
+    <footer class="dim">&copy; 2026 Vishal Kotak</footer>
+  </main>
 </body>
 </html>
