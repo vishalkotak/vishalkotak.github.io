@@ -108,6 +108,39 @@
       color: #e0e0e0;
     }
     
+    /* Experience section styling */
+    .role {
+      margin-bottom: 1rem;
+    }
+
+    .role h3 {
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .role .dates {
+      font-weight: normal;
+      color: #a0a0a0;
+      font-size: 0.85rem;
+    }
+
+    #experience ul {
+      list-style: none;
+      padding-left: 1rem;
+    }
+
+    #experience ul li {
+      position: relative;
+      padding-left: 1.2rem;
+    }
+
+    #experience ul li::before {
+      content: "›";
+      position: absolute;
+      left: 0;
+      color: #e0e0e0;
+    }
+
     /* Contact links in green */
     #contact a {
       color: #00ff00;
@@ -127,7 +160,6 @@
       font-size: 0.8rem;
     }
   </style>
-  </style>
 </head>
 <body>
   <div class="container">
@@ -140,19 +172,83 @@
       <h2>About Me</h2>
       <p>
         I’m an engineer with a passion for designing and building distributed systems.
-        My expertise spans Backend Services, AI, Cloud Infrastructure, and Observability.
+        My expertise spans AI Inference Infrastructure, GPU and RDMA data paths, Distributed Storage, and Cloud Infrastructure.
       </p>
       <p>
-        Companies: Stealth AI Infra, Microsoft, AWS, Amazon Alexa, Fidelity Investments
+        Companies: LinkedIn, Stealth AI Infra, Microsoft, AWS, Amazon Alexa, Fidelity Investments
       </p>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+      <h2>Experience</h2>
+
+      <div class="role">
+        <h3>Senior Software Engineer, LinkedIn <span class="dates">| July 2025 to Present</span></h3>
+        <ul>
+          <li>Led cross-team development of the GPU read path for a distributed transactional storage system, delivering snapshot-consistent, Vortex-encoded data directly into GPU memory over RDMA/UCX. Removed CPU decoding and intermediate host copies from the read path, sustaining multi-GB/s throughput per rank for PyTorch and Ray workloads.</li>
+          <li>Designed a shared storage tier for disaggregated LLM inference, working across teams on KV-cache offloading and RDMA/UCX transfers between prefill and decode workers. Enabled context restoration into HBM in under 30 ms, reducing prefill recomputation and freeing GPU memory for larger batches and longer contexts.</li>
+          <li>Led three engineers building hierarchical quotas and admission control for shared infrastructure. Implemented tenant-to-queue mappings, priority handling, and concurrency controls to prevent simultaneous admission requests from oversubscribing capacity.</li>
+        </ul>
+      </div>
+
+      <div class="role">
+        <h3>Software Engineer, Stealth Startup <span class="dates">| March 2024 to July 2025</span></h3>
+        <ul>
+          <li>Designed a rules-based policy engine within a distributed network control plane for multi-region, multi-tenant GPU clusters, automating lifecycle transitions across 100K+ GPUs, switches, and NICs.</li>
+          <li>Built a Python orchestration engine that translated engineer-defined dependency graphs into Temporal workflows for network automation. Deployed on Kubernetes with PostgreSQL-backed persistence, supporting dependency-aware execution, automatic retries, and recovery from worker failures.</li>
+          <li>Built a model-driven network provisioning layer with configuration rendering for 1K devices, translating topology and device configuration models into deployment specifications consumed by Juniper Mist.</li>
+        </ul>
+      </div>
+
+      <div class="role">
+        <h3>Senior Software Engineer, Microsoft <span class="dates">| September 2023 to February 2024</span></h3>
+        <ul>
+          <li>Architected an Azure OpenAI-powered support Copilot for Azure and Xbox, reducing customer-reported technical incidents by 25%. Built the RAG pipeline with document ingestion, chunking, hybrid retrieval, semantic reranking, and token-budgeted context assembly, alongside tool calling for troubleshooting.</li>
+          <li>Led design of a shared Copilot plugin registry across product portals, implementing manifest validation, metadata-based plugin selection, and schema-validated API invocation using OpenAI plugin standards.</li>
+        </ul>
+      </div>
+
+      <div class="role">
+        <h3>Software Engineer II, Microsoft <span class="dates">| January 2022 to August 2023</span></h3>
+        <ul>
+          <li>Designed a reverse proxy service in C#/.NET that reduced request latency from 2.3 seconds to under 250 ms.</li>
+          <li>Led development of shared authentication, access-token handling, reverse proxy, and preference-storage services across Azure portals, reducing portal launch time from two months to three weeks.</li>
+        </ul>
+      </div>
+
+      <div class="role">
+        <h3>Software Development Engineer, Amazon <span class="dates">| December 2020 to January 2022</span></h3>
+        <ul>
+          <li>Designed multi-tenant AWS Lambda infrastructure for QuickSight data-source connectivity, improving isolation and limiting the blast radius of server-compromise scenarios involving critical databases.</li>
+          <li>Built an asynchronous RabbitMQ pipeline that converted request entity data into speech-recognition artifacts in 3 ms, making that context available to improve recognition on subsequent requests.</li>
+        </ul>
+      </div>
+
+      <div class="role">
+        <h3>Senior Software Engineer, Fidelity Investments <span class="dates">| March 2019 to December 2020</span></h3>
+        <ul>
+          <li>Redesigned risk processing for 40 million customers using Spark, Kafka, Sqoop, and Oracle, reducing execution time from eight hours to 45 minutes.</li>
+          <li>Led development of an international money-movement risk system using NLP-based entity extraction, Python, Java/Spring Boot, and AWS EKS. Reduced false positives by 62% while covering 28% of transaction volume.</li>
+        </ul>
+      </div>
+
+      <div class="role">
+        <h3>Software Engineer, Fidelity Investments <span class="dates">| June 2018 to March 2019</span></h3>
+        <ul>
+          <li>Built a web application using the MEAN stack that enabled investigators to review and validate alerts generated by financial-crime detection systems.</li>
+          <li>Extended customer risk processing with geographic risk indicators for high-intensity drug-trafficking and financial-crime areas.</li>
+        </ul>
+      </div>
     </section>
 
     <!-- Projects Section -->
     <section id="projects">
       <h2>Timeline</h2>
       <ul>
-        <li>2024: Moved to work on a stealth startup building AI data centers focusing on GPU and Networking Infra for training.</li>
-        <li>2022: Started working on FrontDoor service at Microsoft. Got promoted to Senior leading Copilot early release.</li>
+        <li>2025: Joined LinkedIn as a Senior Software Engineer, building the GPU read path over RDMA for distributed storage and a shared KV-cache tier for disaggregated LLM inference.</li>
+        <li>2024: Moved to work on a stealth startup building AI data centers, designing the network control plane that automates 100K+ GPUs, switches and NICs.</li>
+        <li>2022: Started working on FrontDoor service at Microsoft. Got promoted to Senior leading the Azure OpenAI support Copilot for Azure and Xbox.</li>
         <li>2020: Worked with Alexa Local Info (Find Me Nearby Coffee Shops) and AWS QuickSight connectivity.</li>
         <li>2018: Joined Fidelity Investments to work on trading backend services and learnt about Market Making, Insider Trading and Money Laundering.</li>
         <li>2016: Pursued MS in Computer Science to focus on programming languages at Northeastern University, Boston.</li>
@@ -164,14 +260,14 @@
       <h2>Contact</h2>
       <p>
         <a href="mailto:vishal.sanjiv.kotak@gmail.com">vishal.sanjiv.kotak@gmail.com</a>
-      </p>
+      <p>
         <a href="https://www.linkedin.com/in/vishalsanjivkotak" target="_blank">LinkedIn</a>
       </p>
     </section>
 
     <!-- Footer -->
     <footer>
-      <p>&copy; 2025 Vishal Kotak. All rights reserved.</p>
+      <p>&copy; 2026 Vishal Kotak. All rights reserved.</p>
     </footer>
   </div>
 </body>
