@@ -114,6 +114,23 @@
       content: "└─";
     }
 
+    /* Punchy lead-in, then the technical detail */
+    .log li {
+      color: #a8a8a8;
+    }
+
+    .log li em {
+      font-style: normal;
+      font-weight: 700;
+      color: var(--fg);
+    }
+
+    .hook {
+      font-size: 1.05rem;
+      color: var(--green);
+      min-height: 1.6em;
+    }
+
     @media (max-width: 600px) {
       .log ul {
         margin-left: 0;
@@ -144,48 +161,49 @@
   <main class="container">
     <p class="prompt">whoami</p>
     <h1>Vishal Kotak</h1>
-    <p>AI infra engineer. GPUs, RDMA, distributed storage, LLM inference.</p>
+    <p class="hook" id="hook">I build the plumbing that keeps GPUs fed.</p>
+    <p class="dim">zero-copy data paths · KV-cache tiers · control planes for GPU fleets</p>
 
     <p class="prompt">cat stack.txt</p>
     <dl class="stack">
-      <dt>lang</dt><dd>python rust go java</dd>
-      <dt>ai</dt><dd>pytorch cuda sglang rdma/ucx</dd>
-      <dt>infra</dt><dd>k8s terraform kafka postgres azure aws</dd>
+      <dt>lang</dt><dd>python rust go</dd>
+      <dt>ml</dt><dd>pytorch cuda ray sglang</dd>
+      <dt>sys</dt><dd>rdma/ucx vortex kubernetes temporal</dd>
     </dl>
 
     <p class="prompt">git log --oneline career</p>
     <div class="log">
-      <div class="role"><span class="when">2025-now</span><b>LinkedIn</b><span class="dim">sr swe</span></div>
+      <div class="role"><span class="when">2025-now</span><b>LinkedIn</b></div>
       <ul>
-        <li>GPU read path: Vortex data into GPU memory over RDMA/UCX, zero host copies, multi-GB/s per rank</li>
-        <li>shared KV-cache tier for disaggregated prefill/decode, HBM restore in &lt;30 ms</li>
-        <li>led 3 engineers on hierarchical quotas + admission control</li>
+        <li><em>bytes → HBM, no detours.</em> zero-copy GPU read path: snapshot-consistent Vortex columnar data over RDMA/UCX, CPU out of the loop, straight into PyTorch + Ray</li>
+        <li><em>never prefill twice.</em> shared KV-cache tier for disaggregated LLM inference, prefill → decode over RDMA/UCX, context restored into HBM</li>
+        <li><em>fair share, zero oversubscription.</em> hierarchical quotas, tenant → queue mapping and priority-aware admission control</li>
       </ul>
 
-      <div class="role"><span class="when">2024-2025</span><b>Stealth AI Infra</b><span class="dim">swe</span></div>
+      <div class="role"><span class="when">2024-2025</span><b>Stealth AI Infra</b></div>
       <ul>
-        <li>policy engine for a network control plane spanning 100K+ GPUs, switches, NICs</li>
-        <li>dependency graphs → Temporal workflows on k8s + postgres</li>
-        <li>model-driven provisioning for 1K network devices</li>
+        <li><em>policy as code for the fabric.</em> rules engine in a multi-region network control plane, driving GPU/switch/NIC lifecycle state machines</li>
+        <li><em>graphs in, workflows out.</em> DAG → Temporal compiler with dependency-aware execution, retries and crash recovery</li>
+        <li><em>intent → config.</em> model-driven provisioning rendering topology + device models for Juniper Mist</li>
       </ul>
 
-      <div class="role"><span class="when">2022-2024</span><b>Microsoft</b><span class="dim">swe ii → sr swe</span></div>
+      <div class="role"><span class="when">2022-2024</span><b>Microsoft</b></div>
       <ul>
-        <li>Azure OpenAI support Copilot (RAG + tool calling), -25% incidents</li>
-        <li>Copilot plugin registry with schema-validated invocation</li>
-        <li>.NET reverse proxy: 2.3 s → &lt;250 ms</li>
+        <li><em>RAG that earns its tokens.</em> support copilot with hybrid lexical + vector retrieval, semantic reranking, token-budgeted context and tool calling</li>
+        <li><em>an app store for copilots.</em> plugin registry with manifest validation, metadata-based routing and schema-checked tool calls</li>
+        <li><em>one front door.</em> edge reverse proxy + shared auth and token services across portals</li>
       </ul>
 
-      <div class="role"><span class="when">2020-2022</span><b>Amazon</b><span class="dim">sde</span></div>
+      <div class="role"><span class="when">2020-2022</span><b>Amazon</b></div>
       <ul>
-        <li>multi-tenant Lambda isolation for QuickSight connectivity</li>
-        <li>RabbitMQ pipeline feeding Alexa speech recognition context in 3 ms</li>
+        <li><em>blast radius: contained.</em> serverless multi-tenant connectors for QuickSight with per-tenant isolation</li>
+        <li><em>Alexa remembers.</em> async entity pipeline priming speech recognition with context from the previous turn</li>
       </ul>
 
-      <div class="role"><span class="when">2018-2020</span><b>Fidelity</b><span class="dim">swe → sr swe</span></div>
+      <div class="role"><span class="when">2018-2020</span><b>Fidelity</b></div>
       <ul>
-        <li>risk processing for 40M customers on Spark/Kafka: 8 h → 45 min</li>
-        <li>NLP money-movement risk system, -62% false positives</li>
+        <li><em>follow the money.</em> NLP entity extraction + risk scoring for cross-border payments</li>
+        <li><em>risk at scale.</em> customer risk engine rebuilt on Spark + Kafka</li>
       </ul>
 
       <div class="role"><span class="when">2016-2018</span><b>Northeastern</b><span class="dim">ms cs</span></div>
@@ -204,5 +222,19 @@
 
     <footer class="dim">&copy; 2026 Vishal Kotak</footer>
   </main>
+
+  <script>
+    // Retype the hook like a terminal; the static text stays if JS is off
+    (function () {
+      var el = document.getElementById('hook');
+      if (!el || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var text = el.textContent, i = 0;
+      el.textContent = '';
+      (function tick() {
+        el.textContent = text.slice(0, ++i);
+        if (i < text.length) setTimeout(tick, 45);
+      })();
+    })();
+  </script>
 </body>
 </html>
