@@ -183,35 +183,35 @@
     <div class="log">
       <div class="role"><span class="when">2025-now</span><b>LinkedIn</b></div>
       <ul>
-        <li><em>bytes → HBM, no detours.</em> zero-copy GPU read path: snapshot-consistent Vortex columnar data over RDMA/UCX, CPU out of the loop, straight into PyTorch + Ray</li>
-        <li><em>never prefill twice.</em> shared KV-cache tier for disaggregated LLM inference, prefill → decode over RDMA/UCX, context restored into HBM</li>
-        <li><em>fair share, zero oversubscription.</em> hierarchical quotas, tenant → queue mapping and priority-aware admission control</li>
+        <li>Zero-copy GPU read path: snapshot-consistent Vortex columnar data over RDMA/UCX into PyTorch and Ray, bypassing the CPU</li>
+        <li>Shared KV-cache tier for disaggregated LLM inference, prefill → decode over RDMA/UCX, context restored into HBM</li>
+        <li>Hierarchical quotas, tenant → queue mapping and priority-aware admission control</li>
       </ul>
 
       <div class="role"><span class="when">2024-2025</span><b>Stealth AI Infra</b></div>
       <ul>
-        <li><em>policy as code for the fabric.</em> rules engine in a multi-region network control plane, driving GPU/switch/NIC lifecycle state machines</li>
-        <li><em>graphs in, workflows out.</em> DAG → Temporal compiler with dependency-aware execution, retries and crash recovery</li>
-        <li><em>intent → config.</em> model-driven provisioning rendering topology + device models for Juniper Mist</li>
+        <li>Rules engine in a multi-region network control plane, driving GPU/switch/NIC lifecycle state machines</li>
+        <li>DAG → Temporal compiler with dependency-aware execution, retries and crash recovery</li>
+        <li>Model-driven provisioning rendering topology and device models for Juniper Mist</li>
       </ul>
 
       <div class="role"><span class="when">2022-2024</span><b>Microsoft</b></div>
       <ul>
-        <li><em>RAG that earns its tokens.</em> support copilot with hybrid lexical + vector retrieval, semantic reranking, token-budgeted context and tool calling</li>
-        <li><em>an app store for copilots.</em> plugin registry with manifest validation, metadata-based routing and schema-checked tool calls</li>
-        <li><em>one front door.</em> edge reverse proxy + shared auth and token services across portals</li>
+        <li>Support copilot with hybrid lexical and vector retrieval, semantic reranking, token-budgeted context and tool calling</li>
+        <li>Plugin registry with manifest validation, metadata-based routing and schema-checked tool calls</li>
+        <li>Edge reverse proxy and shared auth and token services across portals</li>
       </ul>
 
       <div class="role"><span class="when">2020-2022</span><b>Amazon</b></div>
       <ul>
-        <li><em>blast radius: contained.</em> serverless multi-tenant connectors for QuickSight with per-tenant isolation</li>
-        <li><em>Alexa remembers.</em> async entity pipeline priming speech recognition with context from the previous turn</li>
+        <li>Serverless multi-tenant connectors for QuickSight with per-tenant isolation</li>
+        <li>Async entity pipeline priming speech recognition with context from the previous turn</li>
       </ul>
 
       <div class="role"><span class="when">2018-2020</span><b>Fidelity</b></div>
       <ul>
-        <li><em>follow the money.</em> NLP entity extraction + risk scoring for cross-border payments</li>
-        <li><em>risk at scale.</em> customer risk engine rebuilt on Spark + Kafka</li>
+        <li>NLP entity extraction and risk scoring for cross-border payments</li>
+        <li>Customer risk engine rebuilt on Spark and Kafka</li>
       </ul>
 
       <div class="role"><span class="when">2016-2018</span><b>Northeastern</b><span class="dim">ms cs</span></div>
