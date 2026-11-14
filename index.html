@@ -71,6 +71,14 @@
       display: grid;
       grid-template-columns: 7ch 1fr;
     }
+    .stack.projects {
+      grid-template-columns: 19ch 1fr;
+      row-gap: 0.2rem;
+    }
+    @media (max-width: 600px) {
+      .stack.projects { grid-template-columns: 1fr; }
+      .stack.projects dd { margin-bottom: 0.4rem; color: var(--dim); }
+    }
 
     .stack dt {
       color: var(--dim);
@@ -208,6 +216,15 @@
 
       <div class="role"><span class="when">2016-2018</span><b>Northeastern</b><span class="dim">ms cs</span></div>
     </div>
+
+    <p class="prompt">ls ~/side-projects</p>
+    <dl class="stack projects">
+      <dt><a href="https://github.com/vishalkotak/nvme-kv-cache">nvme-kv-cache</a></dt><dd>DRAM/NVMe page cache in Rust. spill or recompute?</dd>
+      <dt><a href="https://github.com/vishalkotak/inference-serving">inference-serving</a></dt><dd>vLLM paged KV from scratch, CUDA experiments, serving benchmarks</dd>
+      <dt><a href="https://github.com/vishalkotak/infrastructure">infrastructure</a></dt><dd>downstream regression detector, model rollout operator, dependency bot</dd>
+      <dt><a href="https://github.com/vishalkotak/triage-agent">triage-agent</a></dt><dd>incident-triage LLM agent with validated tools</dd>
+      <dt><a href="https://github.com/vishalkotak/healthkit-sync">healthkit-sync</a></dt><dd>all 189 HealthKit types into my own Postgres</dd>
+    </dl>
 
     <p class="prompt">ping vishal</p>
     <p>
