@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Vishal Kotak, AI infrastructure engineer. GPUs, RDMA, distributed storage, LLM inference." />
+  <meta name="description" content="Vishal Kotak, software engineer working on distributed systems and infrastructure. LinkedIn, Microsoft, Amazon." />
   <title>vishal@kotak:~$</title>
   <!-- Terminal prompt favicon -->
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231e1e1e'/%3E%3Cpath d='M14 20l12 12-12 12' fill='none' stroke='%2300ff00' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M32 46h18' stroke='%2300ff00' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E" />
@@ -169,8 +169,8 @@
   <main class="container">
     <p class="prompt">whoami</p>
     <h1>Vishal Kotak</h1>
-    <p class="hook" id="hook">I build the plumbing that keeps GPUs fed.</p>
-    <p class="dim">zero-copy data paths · KV-cache tiers · control planes for GPU fleets</p>
+    <p class="hook" id="hook">Software engineer working on distributed systems and infrastructure.</p>
+    <p class="dim">10 years across LinkedIn, Microsoft and Amazon. Currently building zero-copy GPU data paths and KV-cache tiering.</p>
 
     <p class="prompt">cat stack.txt</p>
     <dl class="stack">
@@ -219,10 +219,17 @@
 
     <p class="prompt">ls ~/side-projects</p>
     <dl class="stack projects">
-      <dt><a href="https://github.com/vishalkotak/nvme-kv-cache">nvme-kv-cache</a></dt><dd>DRAM/NVMe page cache in Rust. spill or recompute?</dd>
-      <dt><a href="https://github.com/vishalkotak/inference-serving">inference-serving</a></dt><dd>vLLM paged KV from scratch, CUDA experiments, serving benchmarks</dd>
-      <dt><a href="https://github.com/vishalkotak/infrastructure">infrastructure</a></dt><dd>downstream regression detector, model rollout operator, dependency bot</dd>
-      <dt><a href="https://github.com/vishalkotak/healthkit-sync">healthkit-sync</a></dt><dd>all 189 HealthKit types into my own Postgres</dd>
+      <dt><a href="https://github.com/vishalkotak/nvme-kv-cache">nvme-kv-cache</a></dt><dd>tiered DRAM/NVMe page cache in Rust, io_uring and blocking I/O backends</dd>
+      <dt><a href="https://github.com/vishalkotak/inference-serving">inference-serving</a></dt><dd>vLLM paged KV cache and PagedAttention reimplemented, serving benchmarks</dd>
+      <dt><a href="https://github.com/vishalkotak/infrastructure">infrastructure</a></dt><dd>downstream regression detector, Kubernetes model rollout operator</dd>
+      <dt><a href="https://github.com/vishalkotak/healthkit-sync">healthkit-sync</a></dt><dd>iOS app syncing Apple Health data to Postgres, with a dashboard</dd>
+    </dl>
+
+    <p class="prompt">ls ~/writing</p>
+    <dl class="stack projects">
+      <dt><a href="https://github.com/vishalkotak/nvme-kv-cache/blob/main/BENCHMARKS.md">cache benchmarks</a></dt><dd>io_uring vs a blocking pool: 3.2x throughput at queue depth 32</dd>
+      <dt><a href="https://github.com/vishalkotak/inference-serving/blob/main/results/d2-disagg-prefill-decode.md">disaggregated prefill/decode</a></dt><dd>why a broken KV handoff still returns HTTP 200</dd>
+      <dt><a href="https://github.com/vishalkotak/inference-serving/blob/main/results/d1-load-test.md">concurrency load test</a></dt><dd>where batching stops paying off</dd>
     </dl>
 
     <p class="prompt">ping vishal</p>
